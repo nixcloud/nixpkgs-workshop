@@ -59,7 +59,41 @@ the directory listing `ls -la` now lists several directories:
   contains `nixos/modules/` which represents all services which can be configured on nixos, see http://nixos.org/nixos/options.html for possible configuration values. 
   `nixos/tests` also provides unit tests which will be covered in the https://nixos.org/wiki/NixOS_Chaos_Communication_Camp_2015#workshop:_nixos_unit_tests workshop.
 
-question: `nix-env -I nixpkgs=/your/directory/nixpkgs -qaP` uses your local checkout instead of the one provided by nix-channel.
+question: `nix-env -I nixpkgs=/your/directory/nixpkgs -qaP` uses your local checkout instead of the one provided by nix-channel. edit `nixpkgs/top-level/all-packages.nix and find this line:
+
+    attic = callPackage ../tools/backup/attic { };
+
+and change it to 
+
+    attic-foo = callPackage ../tools/backup/attic { };
+    ksadfjksadf # this is intentional! (will be removed after we know it is working)
+
+afterwards: `nix-env -I nixpkgs=$NIXPKGS -f default.nix -qaP | grep attic`
+
+and you should get an error like this:
+
+    error: syntax error, unexpected ID, expecting '.' or '=', at /home/joachim/Desktop/projects/nixos/nixpkgs/pkgs/top-level/all-packages.nix:542:3
+    (use ‘--show-trace’ to show detailed location information)
+
+this error is good as it shows that we are actually using our own checkout of `nixpkgs`, so remove:
+
+    ksadfjksadf # this is intentional! (will be removed after we know it is working)
+
+and issue the command again:
+
+    `nix-env -I nixpkgs=$NIXPKGS -f default.nix -qaP | grep attic`
+
+question: the `attribute path` changed but not the `package name`. also change the `package name` now by editing the `default.nix` in the respective directory and verify the change with running: `nix-env -I nixpkgs=$NIXPKGS -f default.nix -qaP | grep attic` again.
+
+finally install the software:
+
+    `nix-env -I nixpkgs=$NIXPKGS -f default.nix -i attic-foo
+
+question: 
+
+* discuss: why is there a `package name` "attic-foo" and `attribute` "attic-foo-0.14"? (please see the packages and options) section below, where this is explained further!
+* how is the resulting binary called, after you installed it? is it called `attic` or `attic-foo`?
+* looking at the `default.nix`, what are the dependencies of the package?
 
 ## packages and options
 * http://nixos.org/nixos/packages.html
