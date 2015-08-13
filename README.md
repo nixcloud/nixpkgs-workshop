@@ -16,7 +16,7 @@ this repository.
 
         git clone 'url you just looked up'
 
-    The problem now is that we have the newest version of the NIXPkGS. This  means we are ahead of the nixchannel. This can result in a rebuild of many packages. To avoid this we are going to get the same NIXPkGS version as it is used on our local machine. Doing so enables us to recieve packages from the binary cache.
+    The problem now is that we have the newest version of the NIXPKGS. This  means we are ahead of the nixchannel. This can result in a rebuild of many packages. To avoid this we are going to get the same NIXPkGS version as it is used on our local machine. Doing so enables us to recieve packages from the binary cache.
 
 3. move into the nixpkgs directory:
 
