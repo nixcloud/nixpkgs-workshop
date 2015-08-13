@@ -74,6 +74,8 @@ note: if you are in your qt5Full environment issue `qmake --version` to verify t
 
 now go to your `nixpkgs` checkout 
 
+http://nixos.org/nixpkgs/manual/#chap-functions
+
 # example
 We want to extend the nano pkg with syntax highliting for '.nix' files. This requires to include the 'nix.nanorc' file into the installation path of nixos. 
 
@@ -95,10 +97,10 @@ example $out ist the installation path of nano and ${hook} is the nix.nanorc fil
 
 4. install nano 
 
-5. Enjoy the new syntaxhighliting. (If you are working on your own machine you have to enable syntaxhighliting first. You can do this by adding 'programs.nano.nanorc 
-= "include ${pkgs.nano}/share/nano/*.nanorc"' to your configuration.nix)
+5. Enjoy the new syntaxhighliting. (If you are working on your own machine you have to enable syntaxhighliting first. You can do this by adding 
+        programs.nano.nanorc ="include ${pkgs.nano}/share/nano/*.nanorc"
+    to your configuration.nix)
 
-http://nixos.org/nixpkgs/manual/#chap-functions
 
 # understanding how dependencies in nixos work
 # deploying your custom software using nix-env/nixos-rebuild/nix-shell
