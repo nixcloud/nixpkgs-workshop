@@ -1,7 +1,7 @@
 # nix related workshops
 
-welcome to the second workshop on the cccamp2015, after we've been using nix-shell to instantiate custom environments with toolchains for 
-developing software we are now going into nixpkgs and how software is packaged:
+welcome to the second `workshop on the cccamp2015`, after we've been using `nix-shell` to instantiate custom environments with toolchains for 
+developing software we are now going into `nixpkgs` and how software is packaged:
 
 * https://events.ccc.de/camp/2015/wiki/Session:NixOS
 * https://nixos.org/wiki/NixOS_Chaos_Communication_Camp_2015#workshop:_nixpkgs
@@ -17,16 +17,25 @@ question: find out what the difference between nix/nixos/nixpkgs documentation c
 
 # nixpkgs construction
 
-all packages and services are packaged inside nixpkgs, so we need a copy of that. you need
+all packages and services are packaged inside nixpkgs, so we need a copy of that. install git first: `nix-env -i git` then do this:
 
 1. go to https://github.com/nixos/nixpkgs
 2. clone nixpkgs
 3. cd nixpkgs
 
+the directory listing `ls -la` now lists several directories:
+
+* lib
+  a bunch of library functions, see `lib/attrsets.nix`, there are lots of examples included on how to use the functions provided for attribute sets, in short; attrsets
 
 * pkgs
-* nixos
+  contains all the software (or packages) in form of nix-expressions called `default.nix`. see `pkgs/top-level` and especially `pkgs/top-level/all-packages.nix` and 
 
+* nixos
+  contains `nixos/modules/` which represents all services which can be configured on nixos, see http://nixos.org/nixos/options.html for possible configuration values. 
+  `nixos/tests` also provides unit tests which will be covered in the https://nixos.org/wiki/NixOS_Chaos_Communication_Camp_2015#workshop:_nixos_unit_tests workshop.
+
+question: `nix-env -I nixpkgs=/your/directory/nixpkgs -qaP` uses your local checkout instead of the one provided by nix-channel.
 
 ## packages and options
 * http://nixos.org/nixos/packages.html
