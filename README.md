@@ -26,6 +26,7 @@ used on our local machine. Doing so enables us to recieve packages from the bina
     cd nixpkgs
 
 4. get your local nixversion:
+
     nixos-version
 
 Your result should loock similar to this:
@@ -35,7 +36,10 @@ Your result should loock similar to this:
 5. Now we can checkout the same version from git:
 
     git checkout 9d5508d
+    git checkout -b 'fix/pkg-name-update'
 
+
+Now we have the same NIXPKGS version as our system. 
 
 * pkgs
 * nixos
