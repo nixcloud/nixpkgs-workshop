@@ -108,6 +108,8 @@ note: if you are in your qt5Full environment issue `qmake --version` to verify t
 
 now go to your `nixpkgs` checkout 
 
+http://nixos.org/nixpkgs/manual/#chap-functions
+
 # example
 We want to extend the nano pkg with syntax highliting for '.nix' files. This requires to include the 'nix.nanorc' file into the installation path of nixos. 
 
@@ -118,16 +120,20 @@ add a 'hook' that enables us to acces the 'nix.nanorc' after the installation. A
 
         hook = ./nix.nanorc;
 
-3. Add another attribute with the name postInstall. Within this Attribute we define what should happen after nano is installed. In our case we want to copy the 
-'nix.nanorc' into the 'share/nano/' directory within the installation folder.  Write a small script (within the default.nix) that copies the nix.nanorc into the 'share/nano/' directory. You can embed some nixvariables into the string. For 
-example $out ist the installation path of nano and ${hook} is the nix.nanorc file.
+3. Add another attribute with the name 'postInstall'. Within this Attribute we define what should happen after nano is installed. In our case we want to copy the 
+'nix.nanorc' into the 'share/nano/' directory within the installation folder.  
+
+    Write a small script (within the default.nix) that copies the nix.nanorc into the 'share/nano/' directory. You can embed some nixvariables into the string. For 
+example `$out` is the installation path of nano and `${hook}` is the nix.nanorc file.
+
+        postInstall = '' TODO '';
+
 
 4. install nano 
 
-5. Enjoy the new syntaxhighliting. (If you are working on your own machine you have to enable syntaxhighliting first. You can do this by adding 'programs.nano.nanorc 
-= "include ${pkgs.nano}/share/nano/*.nanorc"' to your configuration.nix)
+5. Enjoy the new syntaxhighliting. (If you are working on your own machine you have to enable syntaxhighliting first. You can do this by adding 
+    `programs.nano.nanorc ="include ${pkgs.nano}/share/nano/*.nanorc"` to your configuration.nix)
 
-http://nixos.org/nixpkgs/manual/#chap-functions
 
 # understanding how dependencies in nixos work
 # deploying your custom software using nix-env/nixos-rebuild/nix-shell
