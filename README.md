@@ -98,8 +98,7 @@ example $out ist the installation path of nano and ${hook} is the nix.nanorc fil
 4. install nano 
 
 5. Enjoy the new syntaxhighliting. (If you are working on your own machine you have to enable syntaxhighliting first. You can do this by adding 
-        programs.nano.nanorc ="include ${pkgs.nano}/share/nano/*.nanorc"
-    to your configuration.nix)
+    `programs.nano.nanorc ="include ${pkgs.nano}/share/nano/*.nanorc"` to your configuration.nix)
 
 
 # understanding how dependencies in nixos work
