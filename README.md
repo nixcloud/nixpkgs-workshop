@@ -14,35 +14,30 @@ this repository.
 
 2. switch to your local machine and clone the repository with:
 
-    git clone 'url you just looked up'
+        git clone 'url you just looked up'
 
-The problem now is that we have the newest version of the NIXPkGS. This 
-means we are ahead of the nixchannel. This can result in a rebuild of many 
-packages. To avoid this we are going to get the same NIXPkGS version as it is 
-used on our local machine. Doing so enables us to recieve packages from the binary cache.
+    The problem now is that we have the newest version of the NIXPkGS. This  means we are ahead of the nixchannel. This can result in a rebuild of many packages. To avoid this we are going to get the same NIXPkGS version as it is used on our local machine. Doing so enables us to recieve packages from the binary cache.
 
 3. move into the nixpkgs directory:
 
-    cd nixpkgs
+        cd nixpkgs
 
 4. get your local nixversion:
 
-    nixos-version
+        nixos-version
 
-Your result should loock similar to this:
+    Your result should loock similar to this:
 
-    15.07pre66213.9d5508d (Dingo)
+        15.07pre66213.9d5508d (Dingo)
 
 5. Now we can checkout the same version from git:
 
-    git checkout 9d5508d
-    git checkout -b 'fix/pkg-name-update'
+        git checkout 9d5508d
+        git checkout -b 'fix/pkg-name-update'
 
 
-Now we have the same NIXPKGS version as our system. 
+Now we have the same NIXPKGS version as our system and can start with packaging. 
 
-* pkgs
-* nixos
 
 
 ## packages and options
