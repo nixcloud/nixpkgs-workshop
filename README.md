@@ -1,8 +1,19 @@
+# nix related workshops
+
+welcome to the second workshop on the cccamp2015, after we've been using nix-shell to instantiate custom environments with toolchains for 
+developing software we are now going into nixpkgs and how software is packaged:
+
+* https://events.ccc.de/camp/2015/wiki/Session:NixOS
+* https://nixos.org/wiki/NixOS_Chaos_Communication_Camp_2015#workshop:_nixpkgs
+* https://github.com/nixcloud/nixpkgs-workshop
+
+so, let's get started...
+
 # nix programming / language introduction
 
 a good start into nix/nixos is reading the wiki at [1] as it provides links to all important documentations. 
 
-question: find out what the difference between nix/nixos/nixpkgs documentation is. 
+question: find out what the difference between nix/nixos/nixpkgs documentation coverage is. 
 
 # nixpkgs construction
 
