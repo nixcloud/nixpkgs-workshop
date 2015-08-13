@@ -90,7 +90,7 @@ add a 'hook' that enables us to acces the 'nix.nanorc' after the installation. A
 'nix.nanorc' into the 'share/nano/' directory within the installation folder.  
 
     Write a small script (within the default.nix) that copies the nix.nanorc into the 'share/nano/' directory. You can embed some nixvariables into the string. For 
-example $out ist the installation path of nano and ${hook} is the nix.nanorc file.
+example `$out` is the installation path of nano and `${hook}` is the nix.nanorc file.
 
         postInstall = '' TODO '';
 
