@@ -41,7 +41,7 @@ this repository.
 
         15.07pre66213.9d5508d (Dingo)
 
-5. Now we can checkout the same version from git:
+5. Now we can checkout the same version from git using the last part of the version number. (In the example it is 9d5508d, you should replace it with your nixos-version number).
 
         git checkout 9d5508d
         git checkout -b 'fix/pkg-name-update'
@@ -108,7 +108,24 @@ note: if you are in your qt5Full environment issue `qmake --version` to verify t
 
 now go to your `nixpkgs` checkout 
 
+# example
+We want to extend the nano pkg with syntax highliting for '.nix' files. This requires to include the 'nix.nanorc' file into the installation path of nixos. 
 
+1. Navigate into your nixpkgs directory and find the directory which holds all nano related files. At the moment there is only the 'default.nix'. Add the 'nix.nanorc' from this repository to the nano directory.
+
+2. Now we need to adjust the 'default.nix' in a way that adds the 'nix.nanorc' to the installation folder. Open the 'default.nix' with an editor of your choise. We now 
+add a 'hook' that enables us to acces the 'nix.nanorc' after the installation. Add the following code to your 'default.nix'.
+
+        hook = ./nix.nanorc;
+
+3. Add another attribute with the name postInstall. Within this Attribute we define what should happen after nano is installed. In our case we want to copy the 
+'nix.nanorc' into the 'share/nano/' directory within the installation folder.  Write a small script (within the default.nix) that copies the nix.nanorc into the 'share/nano/' directory. You can embed some nixvariables into the string. For 
+example $out ist the installation path of nano and ${hook} is the nix.nanorc file.
+
+4. install nano 
+
+5. Enjoy the new syntaxhighliting. (If you are working on your own machine you have to enable syntaxhighliting first. You can do this by adding 'programs.nano.nanorc 
+= "include ${pkgs.nano}/share/nano/*.nanorc"' to your configuration.nix)
 
 http://nixos.org/nixpkgs/manual/#chap-functions
 
