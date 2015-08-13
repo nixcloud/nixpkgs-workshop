@@ -84,9 +84,14 @@ add a 'hook' that enables us to acces the 'nix.nanorc' after the installation. A
 
         hook = ./nix.nanorc;
 
-3. Add another attribute with the name postInstall. Within this Attribute we define what should happen after nano is installed. In our case we want to copy the 
-'nix.nanorc' into the 'share/nano/' directory within the installation folder.  Write a small script (within the default.nix) that copies the nix.nanorc into the 'share/nano/' directory. You can embed some nixvariables into the string. For 
+3. Add another attribute with the name 'postInstall'. Within this Attribute we define what should happen after nano is installed. In our case we want to copy the 
+'nix.nanorc' into the 'share/nano/' directory within the installation folder.  
+
+    Write a small script (within the default.nix) that copies the nix.nanorc into the 'share/nano/' directory. You can embed some nixvariables into the string. For 
 example $out ist the installation path of nano and ${hook} is the nix.nanorc file.
+
+        postInstall = '' TODO '';
+
 
 4. install nano 
 
